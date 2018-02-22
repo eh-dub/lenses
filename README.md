@@ -7,6 +7,14 @@ I'm realizing there are a lot of freedoms in how the native style CSS/HTML is wr
 
 One thing that I've noticed is that Bootstrap is backed by Flexbox under the hood which is a useful model of 1D layouts that "wrap" into 2D. 
 
+## Possible domains for lenses in the web world
+- jQuery to native impls
+- callbacks to promises (or w/e)
+- XMLHTTPRequest to fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- Similarly flavored frontend frameworks e.g. Angular to Vue to React
+- JavaScript to ReasonML
+
+
 ## TODO
 ### Bootstrap
 - Create more toy examples
