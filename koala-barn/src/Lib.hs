@@ -2,16 +2,11 @@ module Lib where
 
 import Text.HTML.TagSoup
 
-retrieveBootstrapGrids :: IO [Tag String]
-retrieveBootstrapGrids = do
-  f <- readFile "../bootstrapStyle/index.html"
-  let tags = parseTags f
-  -- putStrLn $ show tags
-  let containers = sectionsNoSuffixes (\x -> x ~== TagOpen "div" [("class", "container")]) tags
-  let container1 = head containers
-  putStrLn $ show $ container1
-  putStrLn $ renderTags $ container1
-  pure $ container1
+retrieveBootstrapGrids :: String -> [[Tag String]]
+retrieveBootstrapGrids html = do
+  let tags = parseTags html
+  let grids = sectionsNoSuffixes (\x -> x ~== TagOpen "div" [("class", "container")]) tags
+  grids
 
 -- rename later. Make it about retrieving from opening tag to its closing tag
 sectionsNoSuffixes :: (Tag String -> Bool) -> [Tag String] -> [[Tag String]]
