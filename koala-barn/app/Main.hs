@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import ParseBootstrap
 import Text.HTML.TagSoup
 
 main :: IO ()
@@ -10,4 +10,3 @@ main = do
   let grid1 = head grids
   putStrLn $ show $ grid1
   putStrLn $ renderTags $ grid1
--- main = void retrieveBootstrapGrids
