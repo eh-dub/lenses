@@ -13,18 +13,23 @@ One thing that I've noticed is that Bootstrap is backed by Flexbox under the hoo
 - XMLHTTPRequest to fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - Similarly flavored frontend frameworks e.g. Angular to Vue to React
 - JavaScript to ReasonML
+- CoffeeScript <> JavaScript
+- CSS <> SASS <> LESS
+- HTML Template syntax <> Other HTML Template syntax
 
 
 ## TODO
 ### Bootstrap
 - Create more toy examples
 - Grab snippets of "production" bootstrap and rewrite it 
+- compare notes with: https://hacks.mozilla.org/2017/04/replace-bootstrap-layouts-with-css-grid/
 
 ### Callback code to promises
 - Create a toy example
 
 ### jQuery to Native implementation
 - Create a toy example
+- http://youmightnotneedjquery.com/
 
 ### Angular to Vue to React (and all other flavours of frontend frameworks)
 - Create a toy example (these are harder b/c you need to set up the dependencies too, but this is ignorable at first)
