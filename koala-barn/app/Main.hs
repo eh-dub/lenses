@@ -19,6 +19,7 @@ main = do
   let tagGrid = bootstrapToGrid grid1
   let idGrid = fillInIds tagGrid
   let weightGrid = fromJust $ toWeightGrid idGrid
+  let cssGrid = fromJust $ toCSSGrid idGrid
 
 
   putStrLn "\n"
@@ -27,3 +28,5 @@ main = do
   print idGrid
   putStrLn "\n"
   print weightGrid
+  putStrLn "\n"
+  print cssGrid

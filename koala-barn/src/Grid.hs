@@ -43,7 +43,16 @@ bootstrapToGrid =
 toWeightGrid :: Grid (HTML s) -> Maybe (Grid Int)
 toWeightGrid = traverse $ columnWeight . head . getHTML
 
+toCSSGrid :: Grid (HTML HasIds) -> Maybe (Grid CSS)
+toCSSGrid g = do
+  weightGrid <- toWeightGrid g
+  Just $ pure f <*> (fmap (head . getHTML) g) <*> weightGrid
+  where
+    f (TagOpen tagName attrs) weight =
+      mconcat [ "#", fromJust $ lookup "id" attrs, "{\n"
+              , "\tgrid-column: span ", show weight, ";\n}\n" ]
 
+    -- lookup :: Eq a => a -> [(a, b)] -> Maybe b
 
 infiniteGrid :: Grid (Int, Int)
 infiniteGrid =
