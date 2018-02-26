@@ -1,4 +1,5 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE DeriveTraversable #-}
 
 module Grid where
 
@@ -6,13 +7,16 @@ import Text.HTML.TagSoup hiding (Row, Column)
 
 import ParseBootstrap
 
-import Data.Traversable (for)
+import Data.Traversable (sequenceA)
 import Data.Maybe (fromJust)
 import Data.Functor.Compose (Compose(..))
 import Control.Applicative (ZipList(..))
 
 newtype Grid a = Grid {getGrid :: Compose ZipList ZipList a}
-  deriving (Functor, Applicative)
+  deriving (Functor, Applicative, Foldable, Traversable)
+
+instance Show a => Show (Grid a) where
+  show = show . fromGrid
 
 type BootstrapGrid = Grid (Int, [Tag String])
 type CSS = String
@@ -24,12 +28,12 @@ toGrid = Grid . Compose . ZipList . fmap ZipList
 fromGrid :: Grid a -> [[a]]
 fromGrid = fmap getZipList . getZipList . getCompose . getGrid
 
-bootstrapToGrid :: [Tag String] -> Grid (Int, [Tag String])
-bootstrapToGrid bootstrapGrid =
-  toGrid $
-    flip fmap (rowsFromGrid bootstrapGrid) $ \row ->
-      flip fmap (columnsFromRow row) $ \column ->
-        (fromJust $ columnWeight $ head column, column)
+bootstrapToTagGrid :: [Tag String] -> Grid [Tag String]
+bootstrapToTagGrid =
+  toGrid . fmap columnsFromRow . rowsFromGrid
+
+toWeightGrid :: Grid [Tag String] -> Maybe (Grid Int)
+toWeightGrid = traverse $ columnWeight . head
 
 type Ids = (Int, Int)
 assignIds :: Grid a -> Grid (Ids, a)
