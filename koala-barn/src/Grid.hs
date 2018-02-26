@@ -1,5 +1,6 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE DeriveTraversable #-}
+{-# LANGUAGE TupleSections #-}
 
 module Grid where
 
@@ -35,39 +36,25 @@ bootstrapToTagGrid =
 toWeightGrid :: Grid [Tag String] -> Maybe (Grid Int)
 toWeightGrid = traverse $ columnWeight . head
 
-type Ids = (Int, Int)
-assignIds :: Grid a -> Grid (Ids, a)
-assignIds =
-  overGrid (zip [0..])
-           (zip [0..] . snd)
-    $ \(i,row) (j, col) ->
-        ((i,j), col)
+infiniteGrid :: Grid (Int, Int)
+infiniteGrid =
+  toGrid
+    $ let makeRow r = fmap (r ,) [0..]
+      in
+        fmap makeRow [0..]
 
-
-incorporateIds :: Grid (Ids, [Tag String]) -> Grid [Tag String]
-incorporateIds =
-  overGrid id
-           id
-    $ \_ ((i, j), column) ->
-       addId i j (head column) : tail column
-       where
-         -- overwriting ids is a Bad Idea
-         addId i j (TagOpen tagName attrs) = TagOpen tagName $ ("id", mconcat ["blob", "-", show i, "-", show j] ) : attrs
-
+incorporateIds :: Grid [Tag String] -> Grid [Tag String]
+incorporateIds tags =
+  pure updateTag <*> infiniteGrid <*> tags
+  where
+    updateTag (i, j) column = addId i j (head column) : tail column
+    addId i j (TagOpen tagName attrs) =
+      TagOpen tagName
+        -- overwriting ids is a Bad Idea®
+        $ ("id", mconcat ["col", "-", show i, "-", show j] ) : attrs
 
 zipGrids :: Grid a -> Grid b -> Grid (a, b)
 zipGrids a b = (,) <$> a <*> b
-
-overGrid :: ([[a]] -> [row])
-         -> (row -> [col])
-         -> (row -> col -> b)
-         -> Grid a
-         -> Grid b
-overGrid rowF colF doF grid =
-  toGrid $
-    flip fmap (rowF $ fromGrid grid) $ \row ->
-      flip fmap (colF row) $ \column ->
-        doF row column
 
 -- .grid {
 --   display: grid;
