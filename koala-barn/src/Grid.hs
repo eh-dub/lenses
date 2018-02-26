@@ -8,6 +8,8 @@ import ParseBootstrap
 
 import Data.Traversable (for)
 import Data.Maybe (fromJust)
+import Data.Functor.Compose (Compose(..))
+import Control.Applicative (liftA2)
 
 type Grid a = [[a]]
 
@@ -21,7 +23,8 @@ bootstrapToGrid bootstrapGrid =
     flip fmap (columnsFromRow row) $ \column ->
       (fromJust $ columnWeight $ head column, column)
 
-assignIds :: Grid a -> Grid ((Int, Int), a)
+type Ids = (Int, Int)
+assignIds :: Grid a -> Grid (Ids, a)
 assignIds =
   overGrid (zip [0..])
            (zip [0..] . snd)
@@ -29,17 +32,27 @@ assignIds =
         ((i,j), col)
 
 
-incorporateIds :: Grid ((Int, Int), [Tag String]) -> Grid [Tag String]
+incorporateIds :: Grid (Ids, [Tag String]) -> Grid [Tag String]
 incorporateIds =
   overGrid id
            id
     $ \_ ((i, j), column) ->
        addId i j (head column) : tail column
        where
-         -- overwriting ideas is a Bad Idea
+         -- overwriting ids is a Bad Idea
          addId i j (TagOpen tagName attrs) = TagOpen tagName $ ("id", mconcat ["blob", "-", show i, "-", show j] ) : attrs
 
--- @TODO: use assignIds and incorporateIds and print the result
+fGrid :: (a -> b) -> Grid a -> Grid b
+fGrid f =
+  getCompose . fmap f . Compose
+
+zipGrids :: Grid a -> Grid b -> Grid (a, b)
+zipGrids a b = getCompose $ pure (,) <*> Compose a <*> Compose b
+
+appGrid :: Grid (a -> b) -> Grid a -> Grid b
+appGrid f as =
+   getCompose $ Compose f <*> Compose as
+  -- liftA2 :: (a -> b -> c) -> f a -> f b -> f c
 
 overGrid :: (Grid a -> [row])
          -> (row -> [col])
