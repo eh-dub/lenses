@@ -1,6 +1,8 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE DeriveTraversable #-}
 {-# LANGUAGE TupleSections #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE KindSignatures #-}
 
 module Grid where
 
@@ -19,6 +21,11 @@ newtype Grid a = Grid {getGrid :: Compose ZipList ZipList a}
 instance Show a => Show (Grid a) where
   show = show . fromGrid
 
+data HTMLState = NoIds | HasIds
+
+newtype HTML (s :: HTMLState) = HTML {getHTML :: [Tag String]}
+  deriving (Eq, Ord, Show)
+
 type BootstrapGrid = Grid (Int, [Tag String])
 type CSS = String
 type NativeGrid = Grid (CSS, [Tag String])
@@ -29,12 +36,14 @@ toGrid = Grid . Compose . ZipList . fmap ZipList
 fromGrid :: Grid a -> [[a]]
 fromGrid = fmap getZipList . getZipList . getCompose . getGrid
 
-bootstrapToTagGrid :: [Tag String] -> Grid [Tag String]
-bootstrapToTagGrid =
-  toGrid . fmap columnsFromRow . rowsFromGrid
+bootstrapToGrid :: [Tag String] -> Grid (HTML NoIds)
+bootstrapToGrid =
+  fmap HTML . toGrid . fmap columnsFromRow . rowsFromGrid
 
-toWeightGrid :: Grid [Tag String] -> Maybe (Grid Int)
-toWeightGrid = traverse $ columnWeight . head
+toWeightGrid :: Grid (HTML s) -> Maybe (Grid Int)
+toWeightGrid = traverse $ columnWeight . head . getHTML
+
+
 
 infiniteGrid :: Grid (Int, Int)
 infiniteGrid =
@@ -43,9 +52,10 @@ infiniteGrid =
       in
         fmap makeRow [0..]
 
-incorporateIds :: Grid [Tag String] -> Grid [Tag String]
-incorporateIds tags =
-  pure updateTag <*> infiniteGrid <*> tags
+fillInIds :: Grid (HTML NoIds) -> Grid (HTML HasIds)
+fillInIds tags =
+  fmap HTML
+    $ pure updateTag <*> infiniteGrid <*> fmap getHTML tags
   where
     updateTag (i, j) column = addId i j (head column) : tail column
     addId i j (TagOpen tagName attrs) =
