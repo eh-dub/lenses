@@ -3,6 +3,7 @@
 {-# LANGUAGE TupleSections #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE KindSignatures #-}
+{-# LANGUAGE ViewPatterns #-}
 
 module Grid where
 
@@ -46,13 +47,13 @@ toWeightGrid = traverse $ columnWeight . head . getHTML
 toCSSGrid :: Grid (HTML HasIds) -> Maybe (Grid CSS)
 toCSSGrid g = do
   weightGrid <- toWeightGrid g
-  Just $ pure f <*> (fmap (head . getHTML) g) <*> weightGrid
+  sequenceA $ pure f <*> g <*> weightGrid
   where
-    f (TagOpen tagName attrs) weight =
-      mconcat [ "#", fromJust $ lookup "id" attrs, "{\n"
+    f html weight = do
+      TagOpen tagName attrs <- pure $ head $ getHTML html
+      id' <- lookup "id" attrs
+      pure $ mconcat [ "#", id', "{\n"
               , "\tgrid-column: span ", show weight, ";\n}\n" ]
-
-    -- lookup :: Eq a => a -> [(a, b)] -> Maybe b
 
 infiniteGrid :: Grid (Int, Int)
 infiniteGrid =
