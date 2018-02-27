@@ -5,6 +5,7 @@ import ParseBootstrap
 import Text.HTML.TagSoup
 
 import Data.Maybe (fromJust)
+import Data.Monoid((<>))
 
 
 import Grid
@@ -30,3 +31,9 @@ main = do
   print weightGrid
   putStrLn "\n"
   print cssGrid
+
+  let css = gridCSS ".grid" <> (foldMap id cssGrid)
+  -- print $ gridCSS ".grid"
+  -- print css
+
+  writeFile "../codeGen/style.css" css

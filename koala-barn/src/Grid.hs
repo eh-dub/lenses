@@ -13,6 +13,7 @@ import ParseBootstrap
 
 import Data.Traversable (sequenceA)
 import Data.Maybe (fromJust)
+import Data.Monoid ((<>))
 import Data.Functor.Compose (Compose(..))
 import Control.Applicative (ZipList(..))
 
@@ -76,8 +77,6 @@ fillInIds tags =
 zipGrids :: Grid a -> Grid b -> Grid (a, b)
 zipGrids a b = (,) <$> a <*> b
 
--- .grid {
---   display: grid;
-  -- grid-template-rows: minmax(10px, auto);
---   grid-template-columns: Xfr, Yfr, Zfr, ...
--- }
+gridCSS :: String -> String
+gridCSS name =
+ name <> " {\n\tdisplay: grid;\n\tgrid-template-rows: minmax(10px, auto);\n\tgrid-template-columns: repeat(12, 1fr);\n}\n"
