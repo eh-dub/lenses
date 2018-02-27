@@ -6,7 +6,7 @@ import Text.HTML.TagSoup
 
 import Data.Maybe (fromJust)
 import Data.Monoid((<>))
-
+import Data.Foldable(for_, traverse_)
 
 import Grid
 
@@ -19,21 +19,13 @@ main = do
   -- putStrLn $ renderTags $ grid1
   let tagGrid = bootstrapToGrid grid1
   let idGrid = fillInIds tagGrid
-  let weightGrid = fromJust $ toWeightGrid idGrid
-  let cssGrid = fromJust $ toCSSGrid idGrid
 
+  traverse_ (writeFile "../codeGen/style.css") $ do
+    cssGrid <- toCSSGrid idGrid
+    pure $ gridCSS ".grid" <> foldMap id cssGrid
 
   putStrLn "\n"
   print tagGrid
   putStrLn "\n"
   print idGrid
   putStrLn "\n"
-  print weightGrid
-  putStrLn "\n"
-  print cssGrid
-
-  let css = gridCSS ".grid" <> (foldMap id cssGrid)
-  -- print $ gridCSS ".grid"
-  -- print css
-
-  writeFile "../codeGen/style.css" css
