@@ -77,6 +77,25 @@ fillInIds tags =
 zipGrids :: Grid a -> Grid b -> Grid (a, b)
 zipGrids a b = (,) <$> a <*> b
 
+pageHTML :: Grid (HTML HasIds) -> String
+pageHTML g = mconcat $ fmap (<> "\n") [ "<!DOCTYPE HTML>"
+                   , "<html>"
+                   , "<head>"
+                   , "<link rel=\"stylesheet\" href=\"./style.css\">"
+                   , "</head>"
+                   , "<body>"
+                   , gridHTML g
+                   , "</body>"
+                   , "</html>"
+                   ]
+
+gridHTML :: Grid (HTML HasIds) -> String
+gridHTML g =
+  mconcat [ "<div class=\"grid\">\n"
+          , foldMap ((<> "\n") . renderTags) $ fmap getHTML g
+          , "</div>"
+          ]
+
 gridCSS :: String -> String
 gridCSS name =
  name <> " {\n\tdisplay: grid;\n\tgrid-template-rows: minmax(10px, auto);\n\tgrid-template-columns: repeat(12, 1fr);\n}\n"

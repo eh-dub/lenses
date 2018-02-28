@@ -12,13 +12,15 @@ import Grid
 
 main :: IO ()
 main = do
-  f <- readFile "../bootstrapStyle/index.html"
+  f <- readFile "../bootstrapExamples/1/index.html"
   let grids = retrieveBootstrapGrids f
   let grid1 = head grids
   -- print $ grid1
   -- putStrLn $ renderTags $ grid1
   let tagGrid = bootstrapToGrid grid1
   let idGrid = fillInIds tagGrid
+
+  writeFile "../codeGen/index.html" $ pageHTML idGrid
 
   traverse_ (writeFile "../codeGen/style.css") $ do
     cssGrid <- toCSSGrid idGrid
