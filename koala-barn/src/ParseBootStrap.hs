@@ -1,4 +1,4 @@
-module ParseBootstrap where
+module ParseBootStrap where
 
 import Text.HTML.TagSoup
 

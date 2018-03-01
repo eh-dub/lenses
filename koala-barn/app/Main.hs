@@ -1,6 +1,6 @@
 module Main where
 
-import ParseBootstrap
+import ParseBootStrap
 
 import Text.HTML.TagSoup
 
