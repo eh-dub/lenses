@@ -9,7 +9,7 @@ module Grid where
 
 import Text.HTML.TagSoup hiding (Row, Column)
 
-import ParseBootStrap
+import ParseBootstrap
 
 import Data.Traversable (sequenceA)
 import Data.Maybe (fromJust)
