@@ -79,20 +79,20 @@ fillInIds tags =
 zipGrids :: Grid a -> Grid b -> Grid (a, b)
 zipGrids a b = (,) <$> a <*> b
 
-pageHTML :: Grid (HTML HasIds) -> String
-pageHTML g = mconcat $ fmap (<> "\n") [ "<!DOCTYPE HTML>"
+pageHTML :: [Grid (HTML a)] -> String
+pageHTML grids = mconcat $ fmap (<> "\n") [ "<!DOCTYPE HTML>"
                    , "<html>"
                    , "<head>"
                    , "<link rel=\"stylesheet\" href=\"./bootstrapInCssGrid.css\">"
                    , "<link rel=\"stylesheet\" href=\"./style.css\">"
                    , "</head>"
                    , "<body>"
-                   , gridHTML g
+                   , mconcat $ (fmap gridHTML grids)
                    , "</body>"
                    , "</html>"
                    ]
 
-gridHTML :: Grid (HTML HasIds) -> String
+gridHTML :: Grid (HTML a) -> String
 gridHTML g =
   mconcat [ "<div class=\"grid\">\n"
           , foldMap ((<> "\n") . renderTags) $ fmap getHTML g

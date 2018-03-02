@@ -10,25 +10,26 @@ import Data.Foldable(for_, traverse_)
 
 import Grid
 
-main :: IO ()
+main :: IO [()]
 main = do
-  f <- readFile "../bootstrapExamples/1/index.html"
+  let examples = [1,2]
+  sequence $ fmap (convertExample . show) examples
+
+convertExample :: String -> IO ()
+convertExample folder = do
+  f <- readFile $ "../bootstrapExamples/" <> folder <> "/index.html"
   let grids = retrieveBootstrapGrids f
+
+
+  let convertedGrids = fmap bootstrapToGrid grids
+
+
   let grid1 = head grids
   -- print $ grid1
   -- putStrLn $ renderTags $ grid1
   let tagGrid = bootstrapToGrid grid1
+  print tagGrid
   let idGrid = fillInIds tagGrid
 
-  writeFile "../codeGen/index.html" $ pageHTML idGrid
-  writeFile "../codeGen/style.css" $ gridCSS ".grid"
-
-  -- traverse_ (writeFile "../codeGen/style.css") $ do
-  --   cssGrid <- toCSSGrid idGrid
-  --   pure $ gridCSS ".grid" <> foldMap id cssGrid
-
-  putStrLn "\n"
-  print tagGrid
-  putStrLn "\n"
-  print idGrid
-  putStrLn "\n"
+  writeFile ("../codeGen/" <> folder <> "/index.html") $ pageHTML convertedGrids
+  writeFile ("../codeGen/" <> folder <> "/style.css") $ gridCSS ".grid"

@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://cseweb.ucsd.edu/~lerner/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sorin Lerner</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="./sorin-lerner_files/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+      <!-- .jumbotron { padding: 20px 10px; background-color: #f4f4f4; } -->
+      <!-- .jumbotron { padding: 20px 10px; background-color: #fff4f4; border-style:solid; border-color: #ffe0e0 } -->
+      <!-- .jumbotron { padding: 20px 10px; background-color: #faf4ff; border-style:solid; border-color: #f3e5ff } -->
+
+    <style>
+      body { padding-top: 80px; }
+      .jumbotron { padding: 20px 10px; background-color: #f4f4f4; }
+      .navbar-brand { font-size: 18px; }
+      .nav-item { font-size: 18px; }
+      .form-inline .btn { font-size: 18px; }
+      .top5 { margin-top:5px; }
+      .top7 { margin-top:7px; }
+      .top10 { margin-top:10px; }
+      .top15 { margin-top:15px; }
+      .top17 { margin-top:17px; }
+      .top30 { margin-top:30px; }
+      .bio-div { display: flex; justify-content: flex-end; flex-flow: column nowrap; }
+    </style>
+    <!-- <style> -->
+    <!--   body { padding-top: 80px; } -->
+    <!--   .navbar-brand { font-size: 18px; } -->
+    <!--   .nav-item { font-size: 18px; } -->
+    <!--   .form-inline .btn { font-size: 18px; } -->
+    <!--   .panel-heading { font-size: 23px; } -->
+    <!--   .panel .btn { font-size: 18px; } -->
+    <!-- </style> -->
+    <script language="javascript">
+      window.addEventListener("hashchange", function() { scrollBy(0, -80) })
+    </script>
+
+
+  <style type="text/css">/* ======================================================================
+   NOTE: All classes used by header.js should be prefixed with "focusMe,"
+         to avoid collisions with native CSS.
+   ====================================================================== */
+
+/*
+ * ==============================================
+ * Think of these as defaults that get overridden
+ * by the more specific CSS selectors below. (We
+ * need these defaults to override the stupid
+ * page-specific CSS on Reddit, Twitter, etc.)
+ * ==============================================
+ */
+
+#focusMeRootDiv * {
+  box-sizing: content-box !important;
+  -webkit-box-sizing: content-box !important;
+}
+
+#focusMeRootDiv STRONG {
+  font-weight: bold;
+}
+
+#focusMeRootDiv P {
+  margin: 0 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+
+/* ============================================== */
+
+.focusMeNormalDiv {
+  display: block;
+}
+
+.focusMePopover {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -50px;
+  z-index: 9223372036854775807;
+
+  padding: 3px 5px;
+  color: #000;
+  background-color: #ffefb9;
+  text-align: left;
+  font-size: 12pt;
+  transition: all .35s ease-in-out; /*make it smooth*/
+}
+
+BODY.focusMeModalEngaged {
+  overflow: hidden;
+}
+
+.focusMeModal {
+  background-color: white; /*#ffefb9;*/
+  text-align: left;
+  padding: 30px;
+
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.focusMeModal .focusMeModalPrompt,
+.focusMeModal .focusMeModalPrompt A,
+.focusMeModal .focusMeModalPrompt EM,
+.focusMeModal .focusMeModalPrompt P,
+.focusMeModal .focusMeModalPrompt SPAN,
+.focusMeModal .focusMeModalPrompt STRONG
+{
+  font-size: 18pt;
+}
+
+.focusMeModal .focusMeModalPrompt P+P {
+  margin-top: 1em;
+}
+
+/*
+   Font stuff... need to bind as tightly as possible to
+   as many things as possible, so as not to get overridden
+   by native CSS.
+ */
+.focusMeFloater,
+.focusMeFloater A,
+.focusMeFloater EM,
+.focusMeFloater P,
+.focusMeFloater SPAN,
+.focusMeFloater STRONG,
+.focusMeModal,
+.focusMeModal A,
+.focusMeModal EM,
+.focusMeModal P,
+.focusMeModal SPAN,
+.focusMeModal STRONG,
+INPUT[type="text"].focusMeDailyIntentWriteInOption
+{
+  color: #000;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 12px;
+  line-height: 120%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.focusMeModalDateLine {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+
+  width: 100%;
+  text-align: left;
+
+  color: #666;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*.focusMeCustomRefillButton {*/
+  /*background-color: #eee !important;*/
+/*}*/
+
+.focusMeFloater {
+  padding: 3px 6px;
+  border-radius: 10px;
+  background-color: #ffefb9;
+  text-align: left;
+  border-bottom: 1px solid #FACD9A;
+  z-index: 9223372036854775807;
+}
+
+.focusMeFloater.focusMeTimerExceeded {
+  background-color: #ff000068;
+  border-bottom: 1px solid #5a3637;
+}
+
+.focusMeFloaterTopLeft {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.focusMeFloaterTopRight {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.focusMeFloaterBottomLeft {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+
+.focusMeFloaterBottomRight {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+
+.focusMePopover input[type="button"],
+.focusMeFloater input[type="button"],
+.focusMeModal   input[type="button"],
+.focusMeDivButton {
+  padding: 3px 6px;
+
+  color: black;
+  font-family: system-ui, sans-serif;
+  font-size: 12pt;
+  font-weight: 400;
+  background-color: #FACD9A;
+
+  height: auto;
+
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.focusMePopover input[type="button"]:hover,
+.focusMeFloater input[type="button"]:hover,
+.focusMeModal   input[type="button"]:hover,
+.focusMeDivButton:hover {
+  background-color: #fac87f;
+  box-shadow: 0 0 3px 0 #773709;
+}
+
+.focusMeDivButtonBig {
+  width: 150px;
+  height: 75px;
+
+  margin-left: 10px;
+  margin-right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.focusMeActionButtonContents {
+  text-align: center;
+}
+
+.focusMeActionButtonContents,
+.focusMeActionButtonContents A,
+.focusMeActionButtonContents EM,
+.focusMeActionButtonContents P,
+.focusMeActionButtonContents SPAN,
+.focusMeActionButtonContents STRONG {
+  color: black;
+  font-family: system-ui, sans-serif;
+  font-size: 14pt;
+}
+
+.focusMeActionButtonSupertitle {
+  margin-bottom: 3px;
+  font-size: 12pt;
+}
+
+.focusMeActionButtonPlusSubtitleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+INPUT[type="text"].focusMeDailyIntentWriteInOption {
+  width: 35px !important;
+  min-width: 35px !important;
+  max-width: 35px !important;
+  height: 22px !important;
+  min-height: 22px !important;
+  max-height: 22px !important;
+
+  border: 1px solid lightgray !important;
+  border-radius: 3px !important;
+  padding: 3px !important;
+
+  background: #ffffff !important;
+  box-shadow: none !important;
+
+  font-size: 12pt !important;
+  text-align: right !important;
+}
+
+.focusMePopover input[type="button"] {
+  margin-left: 8px;
+}
+
+.focusMeFloater input[type="button"] {
+  font-size: 10pt;
+}
+
+.focusMeFloater P {
+  margin: 0 0;
+}
+
+.focusMeFloater P + P {
+  margin-top: 10px;
+}
+
+.focusMeFloater P.focusMeSnoozeButton {
+  text-align: center;
+}
+
+.focusMeFloaterHoverExtraContents {
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #c27b48;
+  margin-bottom: 3px;
+}
+
+#focusMeTimeAlreadySpent {
+  margin-top: 10px !important;
+  font-size: 14pt !important;
+  color: #666 !important;
+}
+
+.focusMePopoverLogo {
+  flex-grow: 0;
+  align-self: center;
+  margin: 0 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.focusMePopoverLogo img {
+  width: 20px;
+  height: 20px;
+}
+
+.focusMeAnchorBottom {
+  bottom: 0;
+  border-top: 1px solid #FACD9A;
+}
+
+.focusMeAnchorTop {
+  top: 0;
+  border-bottom: 1px solid #FACD9A;
+  transition: all .35s ease-in-out; /*make it smooth*/
+}
+
+/* Cf. focusMe.css errorBubble */
+.focusMeErrorBubble {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #FFCCCC;
+}
+
+
+
+
+.focusMeFullscreenTopContainer {
+  position: fixed;
+  z-index: 9223372036854775807;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.focusMeFullscreenIntervention {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.50);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.focusMeFullscreenIntervention.focusMeBreather {
+  background-color: rgba(110, 100, 100, 0.90);
+}
+
+.focusMeFullscreenSingleton {
+  margin: 50px auto;
+  max-width: 650px;
+  padding: 30px;
+
+  flex-grow: 0;
+
+  background-color: white;
+
+  border-radius: 20px;
+  /*border: 1px solid rgba(0,0,0,0.4);*/
+  box-shadow: 0px 2px 6px #444;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+}
+
+.focusMeFullscreenSingleton.focusMeBreather {
+  /*flex-grow: 1;*/
+
+  /*background-color: lightgray;*/
+}
+
+/*
+   Font stuff... need to bind as tightly as possible to
+   as many things as possible, so as not to get overridden
+   by native CSS.
+ */
+.focusMeParagraph,
+.focusMeParagraph A,
+.focusMeParagraph EM,
+.focusMeParagraph P,
+.focusMeParagraph SPAN,
+.focusMeParagraph STRONG
+{
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 14pt;
+  line-height: 120%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.focusMeParagraph {
+  display: block;
+  width: 100%;
+}
+
+.focusMeParagraph.focusMeParagraphCentered {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.focusMeParagraph A,
+.focusMeParagraph EM,
+.focusMeParagraph SPAN,
+.focusMeParagraph STRONG {
+  display: inline;
+}
+
+.focusMeParagraph,
+.focusMeParagraph EM,
+.focusMeParagraph P,
+.focusMeParagraph SPAN,
+.focusMeParagraph STRONG
+{
+  color: #000;
+}
+
+
+.focusMeParagraph EM {
+  font-style: italic;
+}
+
+.focusMeParagraph + .focusMeParagraph {
+  margin-top: 1em;
+}
+
+.focusMeBreatherVisitInfo A,
+.focusMeBreatherVisitInfo A:visited,
+.focusMeParagraph A,
+.focusMeParagraph A:visited {
+  color: #1d33a9;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.focusMeBreatherVisitInfo A:hover,
+.focusMeParagraph A:hover {
+  text-decoration: underline;
+}
+
+.focusMeBreatherButtonArea {
+  margin-top: 2.5em !important;
+  margin-bottom: 2.5em;
+}
+
+.focusMeBreatherVisitInfo {
+  position: absolute;
+  top: -1.4em;
+  max-width: 650px;
+
+  background-color: #ffefb9;
+  padding: 0.7em;
+  padding-top: 2.0em;
+  border-radius: 1.0em;
+
+  box-shadow: 0 0 3px #c27b48;
+
+}
+
+.focusMeBreatherVisitInfo,
+.focusMeBreatherVisitInfo A,
+.focusMeBreatherVisitInfo EM,
+.focusMeBreatherVisitInfo P,
+.focusMeBreatherVisitInfo SPAN,
+.focusMeBreatherVisitInfo STRONG
+{
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 10pt;
+  line-height: 120%;
+  -webkit-font-smoothing: antialiased;
+  display: initial !important;
+}
+
+.focusMeBreatherVisitInfo,
+/*.focusMeBreatherVisitInfo A,*/
+.focusMeBreatherVisitInfo EM,
+.focusMeBreatherVisitInfo P,
+.focusMeBreatherVisitInfo SPAN,
+.focusMeBreatherVisitInfo STRONG
+{
+  color: black;
+}
+
+.focusMeDopamineDisruptorReminder,
+.focusMeDopamineDisruptorReminder EM,
+.focusMeDopamineDisruptorReminder P,
+.focusMeDopamineDisruptorReminder SPAN,
+.focusMeDopamineDisruptorReminder STRONG {
+  color: #888;
+  font-size: 11pt;
+}
+
+
+
+
+
+
+.focusMeFullscreenTopContainer.focusMeStatic {
+  pointer-events: none;
+}
+
+#focusMeFullscreenStaticContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+.focusMeStaticCanvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  transition: all 1.0s linear;
+  opacity: 0.0;
+
+  pointer-events: none;
+}
+
+.focusMeStaticCanvas.focusMeVisible {
+  opacity: 0.1;
+}
+
+
+
+.focusMeDefaultStyling {
+  display: initial;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+  font-style: normal;
+  margin: 0 0;
+  padding: 0 0;
+  border: none;
+}</style></head>
+
+  <body data-spy="scroll" data-target="#main-nav-bar">
+    <!-- <nav id="main-nav-bar" class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #182B49;"> -->
+    <nav id="main-nav-bar" class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container">
+      <a class="navbar-brand" href="http://cseweb.ucsd.edu/~lerner/#">Sorin Lerner</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="http://cseweb.ucsd.edu/~lerner/#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://cseweb.ucsd.edu/~lerner/#students">Students</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://cseweb.ucsd.edu/~lerner/#teaching">Teaching</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://cseweb.ucsd.edu/~lerner/#papers">Papers</a></li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <a class="btn btn-outline-primary" href="http://cseweb.ucsd.edu/groups/progsys/">PL@UCSD</a>&nbsp;&nbsp;
+          <a class="btn btn-outline-success" href="https://ucsd-pl.github.io/cse231/wi18/">Teaching now</a>
+        </form>
+      </div>
+    </div> 
+    </nav>
+
+    <div class="container">
+
+    <div class="jumbotron">
+      <div class="row">
+	<div class="col-sm-3 col-md-3 col-lg-2 bio-div">
+	  <img src="./sorin-lerner_files/sorin-head-2012.JPG" class="img-fluid" width="120">
+	</div>
+	<div class="col-sm-9 col-md-4 col-lg-4 top10 bio-div">
+	  <h3>Sorin Lerner</h3>
+	  <span>Professor and Vice-Chair, <a href="http://www.cs.ucsd.edu/">CSE</a> @ <a href="http://www.ucsd.edu/">UCSD</a></span>
+	  Office: EBU3B 3116 <br>
+	  email: lerner@cs.ucsd.edu
+	</div>
+	<div class="col-sm-12 col-md-5 col-lg-6 top10 bio-div">
+          I develop Programming Language techniques and apply
+          them to various domains, including program
+          verification, security/privacy, and HCI. I am always looking
+          for great grad students and post-docs to join our group.
+        </div>
+      </div>
+    </div>
+
+    <h3 id="projects">Current Work</h3>
+    <div class="row">
+      <div class="col-lg-4 col-sm-12 top10">
+        <img src="./sorin-lerner_files/veridrone-logo.png" height="80" alt="VD" style="float:left; margin:0px 10px 0px 0px"> 
+        <h5><a href="http://veridrone.ucsd.edu/">VeriDrone</a>: Verification of Cyber-physical Systems</h5>
+      </div>
+      <div class="col-lg-4 col-sm-12 top10">
+        <img src="./sorin-lerner_files/pb-logo.png" height="60" alt="PB" style="float:left; margin:0px 10px 0px 0px">
+        <h5><a href="http://cseweb.ucsd.edu/~lerner/pb.html">Polymorphic Blocks</a>: Block-based UI for proofs/types</h5>
+      </div>
+      <div class="col-lg-4 col-sm-12 top10">
+        <img src="./sorin-lerner_files/proof-games-logo-1.png" height="80" alt="PB" style="float:left; margin:0px 10px 0px 0px"> 
+        <h5><a href="http://cseweb.ucsd.edu/~lerner/pg.html">Proof Games</a>: Crowdsourcing proofs via gamification</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-sm-12 top10">
+        <img src="./sorin-lerner_files/GHC-logo.jpg" height="80" alt="PB" style="float:left; margin:0px 10px 0px 0px"> 
+        <h5><a href="http://cseweb.ucsd.edu/~lerner/GHC-2017">Attending GHC</a>: UCSD presence at Grace Hopper</h5>
+      </div>
+    </div>
+    <br>
+    <h3>Previous Work</h3>
+    <p class="lead">While the projects below are mostly wrapped up, they give you a flavor for the kind of research I'm interested in.</p>
+    <div class="row">
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/collider.jpg" width="50" height="50" alt="Collider" style="float:left; margin:0px 10px 0px 0px">
+          <a href="http://cseweb.ucsd.edu/~lerner/collider.html">Collider</a>: Correct opts from high-level specifications
+      </div>
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/radar.jpg" width="50" height="50" alt="Radar" style="float:left; margin:0px 10px 0px 0px">
+	  <a href="http://cseweb.ucsd.edu/~lerner/radar.html">Radar</a>: Concurrent analyses from sequential ones
+      </div>
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/quail.jpg" width="50" height="50" alt="Quail" style="float:left; margin:0px 10px 0px 0px">
+          <a href="http://cseweb.ucsd.edu/~lerner/quail.html">Quail</a>:
+        Deep Typechecking &amp; Refactoring
+      </div>
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/arcum.bmp" width="50" height="50" alt="Arcum" style="float:left; margin:0px 10px 0px 0px">
+          <a href="http://cseweb.ucsd.edu/~lerner/arcum.html">Arcum</a>: Crosscutting design idioms, made modular
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/Screen+Shot+2012-07-23+at+9.09.59+AM.png" width="auto" height="50" alt="CodeSpells" style="float:left; margin:0px 10px 0px 0px">
+          <a href="http://www.sarahesper.com/research/codespells/">Code Spells:</a>
+        Game that teaches coding
+      </div>
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/reflex.png" width="50" height="50" alt="Reflex" style="float:left; margin:0px 10px 0px 0px">
+          <a href="http://goto.ucsd.edu/reflex/">Reflex</a>: Verification of reactive systems in Coq
+      </div>
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/quark.png" width="50" height="50" alt="Quark" style="float:left; margin:0px 10px 0px 0px">
+          <a href="http://goto.ucsd.edu/quark/">Quark</a>: Practical web browser verified in Coq
+      </div>
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/js.jpg" width="50" height="50" alt="Javascript" style="float:left; margin:0px 10px 0px 0px">
+	  <a href="http://cseweb.ucsd.edu/~lerner/js.html">Javascript</a>: Analysis for Javascript security
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/hls.jpg" width="50" height="50" alt="TV-HLS" style="float:left; margin:0px 10px 0px 0px">
+	  <a href="http://cseweb.ucsd.edu/~lerner/hls.html">TV-HLS</a>: Verification for High-Level Synthesis
+      </div>
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/persimmon.svg" width="50" height="50" alt="Parsimony" style="float:left; margin:0px 10px 0px 0px">
+	  <a href="https://parsimony-ide.github.io/">Parsimony</a>: Construct parsers by example
+      </div>
+      <div class="col-lg-3 col-sm-12 top10">
+        <img src="./sorin-lerner_files/eddie.png" width="50" height="50" alt="Parsimony" style="float:left; margin:0px 10px 0px 0px">
+	  <a href="http://goto.ucsd.edu/~john/eddie/overview/">Eddie</a>: Synthesize interactive diagrams
+      </div>
+    </div>
+    <br>
+    <h3 id="students">Students</h3>
+    <div class="lead">
+      <p><a href="http://alex.uwplse.org/">Alex Sanchez-Stern</a> (Ph. D. student, started 2016) <br>
+      <!-- <p> Anthony DeRossi (Ph. D. student, started 2016) </p> -->
+      <!-- <p> <a href="http://goto.ucsd.edu/~mario/">Mario Alvarez </a> (Ph. D. student, started 2014) </p> -->
+      <a href="http://cseweb.ucsd.edu/~jsarraci">John Sarracino</a> (Ph. D. student, started 2014) <br>
+      <a href="http://cseweb.ucsd.edu/~vrobert/">Valentin Robert</a> (Ph. D. student, started 2012)<br>
+      Dimitar Bounov (Ph. D. student, started 2011)</p>
+      <p><a href="http://cseweb.ucsd.edu/~atl017/">Alan Leung</a> 
+        (Ph. D. 2017) &nbsp; → &nbsp; Microsoft<br>
+      <a href="http://cseweb.ucsd.edu/~daricket/">Daniel Ricketts</a> 
+        (Ph. D. 2017) &nbsp; → &nbsp; Oracle<br>
+      <a href="http://cseweb.ucsd.edu/~srfoster/">Stephen Foster</a>
+        (Ph. D. 2015, co-advised with <a href="http://cseweb.ucsd.edu/~wgg/">Bill Griswold</a>) 
+        &nbsp; → &nbsp; CEO of <a href="http://www.thoughtstem.com/">ThoughtStem</a><br>
+      Samantha Wood (M. S. 2015, co-advised with <a href="http://cseweb.ucsd.edu/~wgg/">Bill Griswold</a>)<br>
+      <a href="http://homes.cs.washington.edu/~ztatlock">Zachary Tatlock</a> 
+        (Ph. D. 2014) &nbsp; → &nbsp; Assistant Professor at University of Washington <br>
+      <a href="http://cseweb.ucsd.edu/~d1jang/">Dongseok Jang</a> 
+        (Ph. D. 2014) &nbsp; → &nbsp; Google<br>
+      <a href="http://www.cs.cornell.edu/~ross/">Ross Tate</a> 
+	(Ph. D. 2012) &nbsp; → &nbsp; Assistant Professor at Cornell<br>
+      <a href="http://goto.ucsd.edu/~mstepp/">Mike Stepp</a> 
+	(Ph. D. 2011) &nbsp; → &nbsp; Google<br>
+      <a href="http://www.cs.ucsd.edu/~jmeister">Jeffrey A. Meister</a>
+	(M.S. 2011, co-advised with <a href="https://cseweb.ucsd.edu/~rjhala">Ranjit Jhala</a>) &nbsp; → &nbsp; MyLife<br>
+      <a href="http://www.cs.ucsd.edu/~skundu">Sudipta Kundu</a>
+	(Ph. D. 2009, co-advised with <a href="http://cseweb.ucsd.edu/~gupta/">Rajesh Gupta</a>) &nbsp; → &nbsp; Synopsis<br>
+      Macneil Shonle
+	(Ph. D. 2009, co-advised with <a href="http://cseweb.ucsd.edu/~wgg/">Bill Griswold</a>) &nbsp; → &nbsp; The University of Texas at San Antonio, then Google<br>
+      <a href="http://www.cs.ucsd.edu/~jvoung">Jan Wen Voung</a>
+	(Ph. D. 2009, co-advised with <a href="https://cseweb.ucsd.edu/~rjhala">Ranjit Jhala</a>) &nbsp; → &nbsp; Google
+      </p>
+    </div>
+    <br>
+    <h3 id="teaching">Teaching</h3>
+    <p>
+    </p><div class="lead">
+      <div class="card card-default">
+	<div class="card-header">
+	  <div class="row">
+	    <div class="col-sm-8">
+	      CSE 130: Undergraduate Programming Languages
+	    </div>
+	    <div class="col-sm-2">
+	      <a class="btn btn-outline-primary btn-block" href="https://ucsd-pl.github.io/cse-130-230/fa17/">Fall 17</a>
+	    </div>
+	    <div class="col-sm-2">
+	      <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="collapse" data-target="#all-130-offerings">
+		Past
+	      </button>
+	    </div>
+	  </div>
+	</div>
+	<div id="all-130-offerings" class="collapse">
+	  <div class="card-body">
+	    <div class="row">
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/wi07/cse130/">Wi07</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/wi08/cse130/">Wi08</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/wi09/cse130/">Wi09</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/wi10/cse130/">Wi10</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/fa10/cse130/">Fa10</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/wi11/cse130/">Wi11</a>
+	      </div>
+	    </div>
+	    <br>
+	    <div class="row">
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/wi12/cse130-a/">Wi12</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/wi13/cse130-a/">Wi13</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/sp13/cse130-a/">Sp13</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/fa13/cse130-a/">Fa13</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/fa14/cse130-a/">Fa14</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/wi15/cse130-a/">Wi15</a>
+	      </div>
+	    </div>
+	    <br>
+	    <div class="row">
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/wi16/cse130-a/">Wi16</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/fa16/cse130-a/">Fa16</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    
+      <div class="card card-default top10">
+	<div class="card-header">
+	  <div class="row">
+	    <div class="col-sm-8">
+	      CSE 231: Graduate Compilers
+	    </div>
+	    <div class="col-sm-2">
+	      <a class="btn btn-outline-primary btn-block" href="https://ucsd-pl.github.io/cse231/wi18/">Winter 18</a>
+	    </div>
+	    <div class="col-sm-2">
+	      <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="collapse" data-target="#all-231-offerings">
+		Past
+	      </button>
+	    </div>
+	  </div>
+	</div>
+	<div id="all-231-offerings" class="collapse">
+	  <div class="card-body">
+	    <div class="row">
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://www.cse.ucsd.edu/classes/fa06/cse231/">Fa06</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://www.cse.ucsd.edu/classes/fa07/cse231/">Fa07</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://www.cse.ucsd.edu/classes/fa08/cse231/">Fa08</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://www.cse.ucsd.edu/classes/fa09/cse231/">Fa09</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://www.cse.ucsd.edu/classes/sp11/cse231-a/">Sp11</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://www.cse.ucsd.edu/classes/fa11/cse231-a/">Fa11</a>
+	      </div>
+	    </div>
+	    <br>
+	    <div class="row">
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/fa12/cse231-a/">Fa12</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/sp14/cse231-a/">Sp14</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/sp15/cse231-a/">Sp15</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://cseweb.ucsd.edu/classes/fa15/cse231-a/">Fa15</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="https://ucsd-pl.github.io/cse231/wi17/">Wi17</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+
+      <div class="card card-default top10">
+	<div class="card-header">
+	  <div class="row">
+	    <div class="col-sm-8">
+	      CSE 230: Graduate Programming Languages
+	    </div>
+	    <div class="col-sm-2">
+		<a class="btn btn-outline-primary btn-block" href="https://ucsd-pl.github.io/cse-130-230/fa17/">Fall 17</a>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      <br>
+      <div class="card card-default">
+	<div class="card-header">
+	  <div class="row">
+	    <div class="col-sm-8">
+	      CSE 291: Applied Automated Theorem Proving
+	    </div>
+	    <div class="col-sm-2">
+	      <a class="btn btn-outline-primary btn-block" href="http://cseweb.ucsd.edu/~lerner/sp10-atp/">Spring 10</a>
+	    </div>
+	    <div class="col-sm-2">
+	      <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="collapse" data-target="#all-ATP-offerings">
+		Past
+	      </button>
+	    </div>
+	  </div>
+	</div>
+	<div id="all-ATP-offerings" class="card-collapse collapse">
+	  <div class="card-body">
+	    <div class="row">
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://www.cse.ucsd.edu/classes/wi06/cse291-f/">Wi06</a>
+	      </div>
+	      <div class="col-sm-2">
+		<a class="btn btn-outline-secondary btn-block" href="http://www.cse.ucsd.edu/classes/sp08/cse291e/">Sp08</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      <div class="card card-default top10">
+	<div class="card-header">
+	  <div class="row">
+	    <div class="col-sm-8">
+	      CSE 291: Power and Programming Languages
+	    </div>
+	    <div class="col-sm-2">
+		<a class="btn btn-outline-primary btn-block" href="http://cseweb.ucsd.edu/~lerner/energy-seminar/">Spring 09</a>
+	    </div>
+	  </div>
+	</div>
+      </div>
+
+      <div class="card card-default top10">
+	<div class="card-header">
+	  <div class="row">
+	    <div class="col-sm-8">
+	      CSE 291: Software Reliability Methods
+	    </div>
+	    <div class="col-sm-2">
+	      <a class="btn btn-outline-primary btn-block" href="http://cseweb.ucsd.edu/classes/sp06/cse291-a/">Spring 06</a>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <p></p>
+    <br>
+    <h3 id="papers">Papers</h3>
+    <div class="lead">
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/proof-games-chi18.pdf">Inferring Loop Invariants through Gamification</a> (CHI 2018)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Dimitar Bounov, Anthony DeRossi, Massimiliano Menarini, and William G. Griswold.</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/parsimony-ase2017.pdf">Parsimony: An IDE for Example-Guided Synthesis of Lexers and Parsers </a> (ASE 2017)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Alan Leung.</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/eddie-chi17.pdf">User-Guided Synthesis of Interactive Diagrams </a> (CHI 2017)
+	<br>
+	&nbsp;&nbsp;&nbsp; with John Sarracino, Odaris Barrios-Arciga, Jasmine Zhu, Noah Marcus, and Ben Wiedermann.</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/emsoft2016.pdf">Modular Deductive Verification of Sampled-Data Systems</a> (EMSOFT 2016)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Daniel Ricketts and Gregory Malecha.
+        <br>
+        &nbsp;&nbsp;&nbsp; [<a href="http://veridrone.ucsd.edu/">Veridrone Project</a>]
+</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/soscyps2016.pdf">Towards Foundational Verification of Cyber-physical Systems </a> (<a href="http://publish.illinois.edu/science-of-security-lablet/science-of-security-for-cyber-physical-systems-workshop/">SoSCYPS 2016</a>)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Gregory Malecha, Daniel Ricketts and Mario M. Alvarez.</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/ivtbl-ndss16.pdf">Protecting C++ Dynamic Dispatch Through VTable Interleaving </a> (NDSS 2016)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Dimitar Bounov and Rami Gökhan Kici.</p>
+
+      <p><a href="http://ucsd-pl.github.io/veridrone/papers/coqpl2016.pdf">Formal Verification of Stability Properties of Cyber-physical Systems </a> (<a href="http://conf.researchr.org/home/CoqPL-2016">CoqPL 2016</a>)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Matthew Chan, Daniel Ricketts, and Gregory Malecha.
+        <br>
+        &nbsp;&nbsp;&nbsp; [<a href="http://veridrone.ucsd.edu/">Veridrone Project</a>]
+        </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/fp-printing-popl16.pdf">Printing Floating-Point Numbers: An Always Correct Method </a> (POPL 2016)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Marc Andrysco and Ranjit Jhala.</p>
+
+      <p><a href="http://ucsd-pl.github.io/veridrone/papers/memocode2015.pdf">Towards Verification of Hybrid Systems in a Foundational Proof Assistant</a> (<a href="http://memocode.irisa.fr/2015/">MEMOCODE 2015</a>)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Daniel Ricketts, Gregory Malecha, Mario Alvarez, and Vignesh Gowda.
+        <br>
+        &nbsp;&nbsp;&nbsp; [<a href="http://veridrone.ucsd.edu/">Veridrone Project</a>, <a href="http://ucsd-pl.github.io/veridrone/videos/MEMOCODE-15-talk.mp4">Talk</a>]
+        </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/tv-memocode15.pdf">C-To-Verilog Translation Validation </a> (<a href="http://memocode.irisa.fr/2015/">MEMOCODE 2015</a>)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Alan Leung and Dimitar Bounov.</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/GamesToCode-fdg15.pdf">Seamless Integration of Coding and Gameplay: Writing Code Without Knowing it</a> (<a href="http://www.fdg2015.org/">FDG 2015</a>)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Stephen R. Foster and William G. Griswold.</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/parsify-pldi15.pdf">Interactive Parser Synthesis by Example</a> (PLDI 2015)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Alan Leung and John Sarracino.</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/subnormal.pdf">On Subnormal Floating Point and Abnormal Timing</a> (Oakland 2015)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Marc Andrysco, David Kohlbrenner, Keaton Mowery, Ranjit Jhala, and Hovav Shacham.</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/polymorphic-blocks-chi15.pdf">Polymorphic Blocks: Formalism-Inspired UI for Structured Connectors</a> (CHI 2015)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Stephen R. Foster and William G. Griswold.</p>
+
+      <p><a href="http://goto.ucsd.edu/reflex/reflex-pldi14.pdf">Automating Formal Proofs for Reactive Systems</a> (PLDI 2014)
+      <br>
+      &nbsp;&nbsp;&nbsp; with Daniel Ricketts, Valentin Robert, Dongseok Jang and Zachary Tatlock
+      <br>
+      &nbsp;&nbsp;&nbsp; [Project web site for <a href="http://goto.ucsd.edu/reflex">Reflex</a>, including videos of what we built, video of PLDI talk, source code, and working VM image ]</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/ndss14.pdf">SafeDispatch: Securing C++ Virtual Calls from Memory Corruption Attacks</a> (NDSS 2014)
+      <br>
+      &nbsp;&nbsp;&nbsp; with Dongseok Jang and Zachary Tatlock
+
+      </p><p><a href="http://goto.ucsd.edu/quark/usenix12.pdf">Establishing Browser Security Guarantees through Formal Shim Verification</a> (USENIX 2012)
+      <br>
+      &nbsp;&nbsp;&nbsp; with Dongseok Jang and Zachary Tatlock
+      <br>
+      &nbsp;&nbsp;&nbsp; [Project web site for <a href="http://goto.ucsd.edu/quark">Quark browser</a>, including videos of the browser, source code, and working VM image]</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/verifying_gpu_kernels_by_test_amplification.pdf">Verifying GPU Kernels By Test Amplification</a> (PLDI 2012)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Alan Leung, Manish Gupta, Yuvraj Agarwal, Rajesh Gupta and Ranjit Jhala</p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/witch_doctor.pdf"> WitchDoctor: IDE support for real-time auto-completion of refactorings</a> (ICSE 2012)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Stephen R. Foster and William G. Griswold
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/cav2011.pdf"> Equality-Based Translation Validator for LLVM</a> (CAV 2011)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Michael Stepp and Ross Tate
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~rtate/publications/tamewild/"> 
+	  Taming Wildcards in Java's Type System</a> (PLDI 2011)<br>
+	&nbsp;&nbsp;&nbsp; with Ross Tate and Alan Leung
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/nips10.html">Latent Variable Models for Predicting
+	  File Dependencies in Large-Scale Software Development</a> (NIPS 2010)<br>
+	&nbsp;&nbsp;&nbsp; with Diane Hu, Laurens van der Maaten, Youngmin
+	Cho, and Lawrence K. Saul
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/ccs10-jsc.html">An Empirical Study of
+	  Privacy-Violating Information Flows in JavaScript Web Applications</a> 
+	(CCS 2010)<br>
+	&nbsp;&nbsp;&nbsp; with Dongseok Jang, Ranjit Jhala, and Hovav Shacham
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/pldi10-xcert.html">Bringing Extensibility to
+	  Verified Compilers</a> (PLDI 2010)<br>
+	&nbsp;&nbsp;&nbsp; with Zachary Tatlock
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/popl10.html">Generating Compiler Optimizations from Proofs</a> (POPL 2010)<br>
+	&nbsp;&nbsp;&nbsp; with Ross Tate, and Michael Stepp
+      </p>
+      
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/pldi09-pec.html">Proving Optimizations Correct using Parameterized Program Equivalence</a> (PLDI 2009)<br>
+	&nbsp;&nbsp;&nbsp; with Sudipta Kundu, and Zachary Tatlock
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/pldi09-sif.html">Staged Information Flow for 
+	  JavaScript</a> (PLDI 2009)<br>
+	&nbsp;&nbsp;&nbsp; with Ravi Chugh, Jeffrey A. Meister, and Ranjit Jhala
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/popl09.html">Equality Saturation: a New Approach to Optimization</a> (POPL 2009)<br>
+	&nbsp;&nbsp;&nbsp; with Ross Tate, Michael Stepp, and Zachary Tatlock
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/paste08.pdf">Addressing Common Crosscutting Problems with Arcum</a> (PASTE 2008)<br>
+	&nbsp;&nbsp;&nbsp; with Macneil Shonle and William G. Griswold
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/wrt08.pdf">When Refactoring Acts like Modularity:
+	  Keeping Options Open with Persistent Condition Checking</a>
+	(WRT 2008)<br>
+	&nbsp;&nbsp;&nbsp; with Macneil Shonle and William G. Griswold
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/quail.html">Deep Typechecking and Refactoring</a>
+	(OOPSLA 2008)<br>
+	&nbsp;&nbsp;&nbsp; with Zachary Tatlock, 
+	Chris Tucker, David Shuffelton, and Ranjit Jhala
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/hls.html">Validating High Level Synthesis</a> 
+	(CAV 2008)<br>
+	&nbsp;&nbsp;&nbsp; with Sudipta Kundu and Rajesh Gupta 
+      </p>
+
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/radar.html">Dataflow Analysis for Concurrent
+	  Programs using Datarace Detection</a> (PLDI 2008)<br>
+	&nbsp;&nbsp;&nbsp; with Ravi Chugh, Jan Voung, and Ranjit Jhala
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/arccos.html">Automated Refinement Checking of 
+	  Concurrent Systems</a> (ICCAD 2007) <br>
+	&nbsp;&nbsp;&nbsp; with Sudipta Kundu and Rajesh Gupta
+      </p>
+
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/arcum.html">Beyond Refactoring: A Framework for Modular
+	  Maintenance of Crosscutting Design Idioms</a> (ESEC/FSE 2007) <br>
+	&nbsp;&nbsp;&nbsp; with Macneil Shonle and William G. Griswold
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/relay.html"> RELAY: Static Race Detection on Millions of Lines of Code</a> (ESEC/FSE 2007) <br>
+	&nbsp;&nbsp;&nbsp; with Jan Voung and Ranjit Jhala
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/inferring_flow_functions.html"> 
+	  Automatic Inference of Optimizer Flow Functions from Semantic
+	  Meanings</a> (PLDI 2007) <br>
+	&nbsp;&nbsp;&nbsp; with Erika Rice Scherpelz and Craig Chambers
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/papers/opium.html">
+	  OPIUM: Optimal Package Install/Uninstall Management</a> (ICSE 2007) <br>
+	&nbsp;&nbsp;&nbsp; with Chris Tucker, David Shuffelton, and Ranjit
+	Jhala <br>
+	&nbsp;&nbsp;&nbsp; <!-- <IMG SRC="new.gif" HEIGHT=12 WIDTH=31>  -->
+	Our OPIUM work is being incorporated into Eclipse <br>
+	&nbsp;&nbsp;&nbsp; 
+	[ <a href="http://mail-archive.ow2.org/sat4j-dev/2008-03/msg00001.html">announcement
+	  1</a>
+	| <a href="http://forge.objectweb.org/forum/message.php?msg_id=10260">
+	  annoucement 2
+	</a> |  
+	<a href="http://wiki.eclipse.org/Equinox_P2_Resolution"> more details</a> ]
+	
+      </p>
+
+      <p><a href="http://cseweb.ucsd.edu/~lerner/lerner-dissertation.pdf">
+	  Automatically Proving the Correctness of Program Analyses and 
+	  Transformations</a> (PhD dissertation, 2006)<br>
+	&nbsp;&nbsp;&nbsp; University of Washington
+      </p>
+      
+      <p><a href="http://www.cse.ucsd.edu/groups/progsys/pubs/rhodium_cocv_05.html">
+	  Automatically Inferring Sound Dataflow Functions from Dataflow Fact
+	  Schemas</a> (COCV 2005) <br>
+	&nbsp;&nbsp;&nbsp; with Erika Rice and Craig Chambers
+      </p>
+
+      <p><a href="http://www.cse.ucsd.edu/groups/progsys/pubs/rhodium_popl_05.html">
+	  Automated Soundness Proofs for Dataflow Analyses and Transformations via
+	  Local Rules</a> (POPL 2005) <br>
+	&nbsp;&nbsp;&nbsp; with Todd Millstein, Erika Rice, and Craig
+	Chambers <br>
+	&nbsp;&nbsp;&nbsp; [ <a href="http://cseweb.ucsd.edu/~lerner/popl05.ppt">Slides</a> | <a href="http://cseweb.ucsd.edu/~lerner/UW-CSE-2004-07-04.pdf">Tech Report</a> ]
+      </p>
+
+      <p><a href="http://www.cse.ucsd.edu/groups/progsys/pubs/cobalt_pldi_03.html">
+	  Automatically Proving the Correctness of Compiler Optimizations</a>
+	(PLDI 2003, Best Paper Award)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Todd Millstein, and Craig Chambers<br>
+	&nbsp;&nbsp;&nbsp; [ <a href="http://cseweb.ucsd.edu/~lerner/pldi03.ppt">Slides</a> | 
+        <a href="http://cseweb.ucsd.edu/~lerner/UW-CSE-02-11-02.pdf">Tech Report</a> ]
+      </p>
+
+      <p>
+	Speeding Up Dataflow Analysis Using Flow-Insensitive Pointer
+	Analysis (SAS 2002) <br>
+	&nbsp;&nbsp;&nbsp; with Stephen Adams, Thomas Ball, Manuvir Das, <br>
+	&nbsp;&nbsp;&nbsp;  Sriram K. Rajamani, Mark Seigle, and Westley Weimer<br>
+	<!--    <i> The 9th International Static Analysis Symposium (SAS -->
+	<!--    2002)</i>. Madrid, Spain September 2002. <br> -->
+      </p>
+
+      <p><a href="http://www.cse.ucsd.edu/groups/progsys/pubs/esp_pldi_02.html">
+	  ESP: Path-Sensitive Program Verification in Polynomial Time
+	</a> (PLDI 2002)
+	<br>
+	&nbsp;&nbsp;&nbsp; with Manuvir Das and Mark Seigle
+      </p>
+
+      <p><a href="http://www.cse.ucsd.edu/groups/progsys/pubs/dataflow_popl_02.html">
+	  Combining Dataflow Analyses and Transformations</a> (POPL 2002) <br>
+	&nbsp;&nbsp;&nbsp; with David Grove and Craig Chambers <br>
+	&nbsp;&nbsp;&nbsp; [ <a href="http://cseweb.ucsd.edu/~lerner/popl02.ppt">Slides</a> | 
+        <a href="http://cseweb.ucsd.edu/~lerner/UW-CSE-01-11-01.pdf">Tech Report</a> ]
+      </p>
+    </div>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="./sorin-lerner_files/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="./sorin-lerner_files/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="./sorin-lerner_files/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <!-- <script src="jquery.js"></script> -->
+    <!-- <script src="bootstrap.min.js"></script> --><div id="focusMeRootDiv"><!-- react-empty: 1 --></div>
+  
+
+</body></html>
