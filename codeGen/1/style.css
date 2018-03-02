@@ -1,3 +1,3 @@
-.grid {
+#grid-0 {
 	display: grid;
-	grid-template-rows: minmax(10px, auto);}
+	grid-template-rows: repeat(1, minmax(10px, auto));}

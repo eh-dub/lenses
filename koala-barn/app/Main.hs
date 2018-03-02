@@ -12,7 +12,7 @@ import Grid
 
 main :: IO [()]
 main = do
-  let examples = [1,2]
+  let examples = [1,2,3]
   sequence $ fmap (convertExample . show) examples
 
 convertExample :: String -> IO ()
@@ -32,4 +32,4 @@ convertExample folder = do
   let idGrid = fillInIds tagGrid
 
   writeFile ("../codeGen/" <> folder <> "/index.html") $ pageHTML convertedGrids
-  writeFile ("../codeGen/" <> folder <> "/style.css") $ gridCSS ".grid"
+  writeFile ("../codeGen/" <> folder <> "/style.css") $ pageCSS convertedGrids 

@@ -87,18 +87,29 @@ pageHTML grids = mconcat $ fmap (<> "\n") [ "<!DOCTYPE HTML>"
                    , "<link rel=\"stylesheet\" href=\"./style.css\">"
                    , "</head>"
                    , "<body>"
-                   , mconcat $ (fmap gridHTML grids)
+                   , mconcat $ (fmap gridHTML $ zip grids [0..])
                    , "</body>"
                    , "</html>"
                    ]
 
-gridHTML :: Grid (HTML a) -> String
-gridHTML g =
-  mconcat [ "<div class=\"grid\">\n"
+gridHTML :: (Grid (HTML a), Int) -> String
+gridHTML (g, id') =
+  mconcat [ "<div class=\"grid\" id=\"grid-" <> show id' <> "\">\n"
           , foldMap ((<> "\n") . renderTags) $ fmap getHTML g
           , "</div>"
           ]
 
-gridCSS :: String -> String
-gridCSS name =
- name <> " {\n\tdisplay: grid;\n\tgrid-template-rows: minmax(10px, auto);}\n"
+pageCSS :: [Grid (HTML a)] -> String
+pageCSS grids = mconcat $ fmap gridCSS $ zip grids [0..]
+
+-- @TODO: Compute number of rows in grid
+gridCSS :: (Grid (HTML a), Int) -> String
+gridCSS (g, id') =
+  let numRows = show $ length $ fromGrid g
+  in
+    mconcat [ "#grid-"
+            , show id'
+            , " {\n\tdisplay: grid;"
+            , "\n\tgrid-template-rows: "
+            , "repeat(" <> numRows <> ", minmax(10px, auto));}\n"
+            ]
