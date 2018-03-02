@@ -45,6 +45,8 @@ bootstrapToGrid =
 toWeightGrid :: Grid (HTML s) -> Maybe (Grid Int)
 toWeightGrid = traverse $ columnWeight . head . getHTML
 
+-- This is dumb. grid spans should be done at the CSS library level.
+-- Should instead worry about sucking up additional CSS
 toCSSGrid :: Grid (HTML HasIds) -> Maybe (Grid CSS)
 toCSSGrid g = do
   weightGrid <- toWeightGrid g
@@ -81,6 +83,7 @@ pageHTML :: Grid (HTML HasIds) -> String
 pageHTML g = mconcat $ fmap (<> "\n") [ "<!DOCTYPE HTML>"
                    , "<html>"
                    , "<head>"
+                   , "<link rel=\"stylesheet\" href=\"./bootstrapInCssGrid.css\">"
                    , "<link rel=\"stylesheet\" href=\"./style.css\">"
                    , "</head>"
                    , "<body>"
@@ -98,4 +101,4 @@ gridHTML g =
 
 gridCSS :: String -> String
 gridCSS name =
- name <> " {\n\tdisplay: grid;\n\tgrid-template-rows: minmax(10px, auto);\n\tgrid-template-columns: repeat(12, 1fr);\n}\n"
+ name <> " {\n\tdisplay: grid;\n\tgrid-template-rows: minmax(10px, auto);}\n"

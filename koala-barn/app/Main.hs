@@ -21,10 +21,11 @@ main = do
   let idGrid = fillInIds tagGrid
 
   writeFile "../codeGen/index.html" $ pageHTML idGrid
+  writeFile "../codeGen/style.css" $ gridCSS ".grid"
 
-  traverse_ (writeFile "../codeGen/style.css") $ do
-    cssGrid <- toCSSGrid idGrid
-    pure $ gridCSS ".grid" <> foldMap id cssGrid
+  -- traverse_ (writeFile "../codeGen/style.css") $ do
+  --   cssGrid <- toCSSGrid idGrid
+  --   pure $ gridCSS ".grid" <> foldMap id cssGrid
 
   putStrLn "\n"
   print tagGrid
