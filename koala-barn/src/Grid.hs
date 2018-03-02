@@ -83,7 +83,7 @@ pageHTML :: [Grid (HTML a)] -> String
 pageHTML grids = mconcat $ fmap (<> "\n") [ "<!DOCTYPE HTML>"
                    , "<html>"
                    , "<head>"
-                   , "<link rel=\"stylesheet\" href=\"./bootstrapInCssGrid.css\">"
+                   , "<link rel=\"stylesheet\" href=\"../bootstrapInCssGrid.css\">"
                    , "<link rel=\"stylesheet\" href=\"./style.css\">"
                    , "</head>"
                    , "<body>"
